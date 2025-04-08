@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Construction Carbon Emission Prediction</title>
+</head>
+<body>
+    <h1>Enter Project Details</h1>
+    <form method="POST">
+        <label>Labor Requirements:</label><br>
+        <input type="number" step="any" name="labor" required><br>
+
+        <label>Equipment Usage:</label><br>
+        <input type="number" step="any" name="equipment" required><br>
+
+        <label>Material Quantities:</label><br>
+        <input type="number" step="any" name="material" required><br>
+
+        <label>Project Duration (days):</label><br>
+        <input type="number" step="any" name="duration" required><br>
+
+        <label>Schedule Optimization (0 or 1):</label><br>
+        <input type="number" name="schedule_opt" min="0" max="1" required><br>
+
+        <label>Computation Time (CT):</label><br>
+        <input type="number" step="any" name="comp_time" required><br>
+
+        <label>Best Cost (BC):</label><br>
+        <input type="number" step="any" name="cost" required><br>
+
+        <label>Evaluation Metric (Nfe):</label><br>
+        <input type="number" step="any" name="metric" required><br>
+
+        <label>Mean Resource Demand:</label><br>
+        <input type="number" step="any" name="mean_demand" required><br>
+
+        <label>SD of Resource Demand:</label><br>
+        <input type="number" step="any" name="sd_demand" required><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if results is not none %}
+        <h2>Predicted Total Carbon Emission: {{ results }} tons</h2>
+    {% endif %}
+</body>
+</html>

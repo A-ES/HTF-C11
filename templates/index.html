@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Construction Risk Prediction Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+        }
+        .container {
+            background: #1e1e2f;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+        }
+        .form-control, .form-label {
+            margin-bottom: 15px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .result-box {
+            background: #28a745;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Construction Risk Prediction</h1>
+    <form method="POST">
+        <label>Select target to predict:</label><br>
+        <select name="target" required class="form-control mb-3">
+            <option value="efficiency">Resource Allocation Efficiency</option>
+            <option value="risk">Risk Level</option>
+            <option value="duration">Project Duration</option>
+        </select>
+
+        {% for field in [
+            'labor', 'equipment', 'material', 'duration',
+            'schedule_opt', 'comp_time', 'cost', 'metric',
+            'mean_demand', 'sd_demand', 'risk_level'
+        ] %}
+        <div class="mb-3">
+            <label class="form-label">{{ field.replace('_', ' ').title() }}</label>
+            <input type="number" step="any" class="form-control" name="{{ field }}" required>
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-light w-100">Predict</button>
+    </form>
+
+    {% if prediction is not none %}
+    <div class="result-box mt-4">
+        <strong>Predicted {{ target.replace("_", " ").title() }}:</strong> {{ prediction }}
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
