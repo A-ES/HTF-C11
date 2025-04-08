@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Construction Resource Optimizer</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="light-theme">
+  <header class="header">
+    <div class="header-title">
+      <h1>Construction Resource Optimizer</h1>
+    </div>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-sun light-icon"></i>
+        <i class="fas fa-moon dark-icon"></i>
+      </button>
+      <div class="user-profile">
+        <img src="https://via.placeholder.com/32" alt="User" class="user-avatar">
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <div class="dashboard-header">
+      <h2>Dashboard</h2>
+      <p class="subtitle">Smart Resource Optimization for Efficient Construction Management</p>
+    </div>
+
+    <div class="tabs-container">
+      <div class="tabs">
+        <button class="tab-button active" data-tab="overview">Overview</button>
+        <button class="tab-button" data-tab="resources">Resources</button>
+        <button class="tab-button" data-tab="predictions">Predictions</button>
+        <button class="tab-button" data-tab="optimization">Optimization</button>
+        <button class="tab-button" data-tab="environmental">Environmental</button>
+        <button class="tab-button highlight" data-tab="ai-insights">AI Insights</button>
+      </div>
+
+      <div class="tab-content active" id="overview">
+        <div class="card-grid">
+          <!-- Project Completion Card -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Project Completion</h3>
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="card-content">
+              <div class="metric">68%</div>
+              <div class="progress-bar">
+                <div class="progress" style="width: 68%"></div>
+              </div>
+              <p class="metric-note">+2.5% from last week</p>
+            </div>
+          </div>
+
+          <!-- Budget Utilization Card -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Budget Utilization</h3>
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="card-content">
+              <div class="metric">$1,200,000 / $1,800,000</div>
+              <div class="progress-bar">
+                <div class="progress" style="width: 66%"></div>
+              </div>
+              <p class="metric-note">Under budget by 34.0%</p>
+            </div>
+          </div>
+
+          <!-- Time Efficiency Card -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Time Efficiency</h3>
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="card-content">
+              <div class="metric">94%</div>
+              <div class="badge success">On Schedule</div>
+              <p class="metric-note">2 days ahead of schedule</p>
+            </div>
+          </div>
+
+          <!-- Resource Utilization Card -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Resource Utilization</h3>
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="card-content">
+              <div class="metric">87%</div>
+              <div class="progress-bar">
+                <div class="progress" style="width: 87%"></div>
+              </div>
+              <p class="metric-note">+5% from optimal target</p>
+            </div>
+          </div>
+
+          <!-- Project Timeline Card -->
+          <div class="card wide">
+            <div class="card-header">
+              <h3>Project Timeline</h3>
+              <p>Current progress and upcoming milestones</p>
+            </div>
+            <div class="card-content">
+              <div class="timeline">
+                <div class="timeline-item completed">
+                  <div class="timeline-icon"><i class="fas fa-check-circle"></i></div>
+                  <div class="timeline-content">
+                    <h4>Foundation Work</h4>
+                    <p class="timeline-date">Jan 15 - Feb 28, 2024</p>
+                    <p>Excavation and concrete foundation completed</p>
+                  </div>
+                </div>
+                <div class="timeline-item completed">
+                  <div class="timeline-icon"><i class="fas fa-check-circle"></i></div>
+                  <div class="timeline-content">
+                    <h4>Structural Framework</h4>
+                    <p class="timeline-date">Mar 1 - Apr 15, 2024</p>
+                    <p>Steel framework and primary structure assembly</p>
+                  </div>
+                </div>
+                <div class="timeline-item in-progress">
+                  <div class="timeline-icon"><i class="fas fa-clock"></i></div>
+                  <div class="timeline-content">
+                    <h4>Electrical & Plumbing</h4>
+                    <p class="timeline-date">Apr 16 - May 30, 2024</p>
+                    <p>Installation of electrical wiring and plumbing systems</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-icon"><i class="far fa-circle"></i></div>
+                  <div class="timeline-content">
+                    <h4>Interior Construction</h4>
+                    <p class="timeline-date">Jun 1 - Jul 15, 2024</p>
+                    <p>Walls, flooring, and interior fixtures</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-icon"><i class="far fa-circle"></i></div>
+                  <div class="timeline-content">
+                    <h4>Finishing & Inspection</h4>
+                    <p class="timeline-date">Jul 16 - Aug 30, 2024</p>
+                    <p>Final touches and regulatory inspections</p>
+                    <p class="risk-note">Potential delay due to inspector availability</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Risk Assessment Card -->
+          <div class="card wide">
+            <div class="card-header">
+              <h3>Risk Assessment</h3>
+              <p>AI-identified potential risks and mitigation strategies</p>
+            </div>
+            <div class="card-content">
+              <div class="risk-diagram">
+                <canvas id="riskCanvas" width="500" height="300"></canvas>
+              </div>
+              <div class="risk-list">
+                <div class="risk-item">
+                  <i class="fas fa-exclamation-triangle warning"></i>
+                  <div class="risk-details">
+                    <h4>Material Delivery Delay</h4>
+                    <p>Concrete supplier has reported potential delays due to transportation issues.</p>
+                    <div class="risk-badges">
+                      <span class="badge outline">High Risk</span>
+                      <span class="badge warning outline">Mitigation Required</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="risk-item">
+                  <i class="fas fa-exclamation-triangle info"></i>
+                  <div class="risk-details">
+                    <h4>Labor Shortage</h4>
+                    <p>Skilled labor shortage in the region may affect project timeline.</p>
+                    <div class="risk-badges">
+                      <span class="badge outline">Medium Risk</span>
+                      <span class="badge info outline">Monitoring</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="resources">
+        <h3>Resource Allocation</h3>
+        <p>This tab will display resource allocation data.</p>
+      </div>
+
+      <div class="tab-content" id="predictions">
+        <h3>Predictive Analytics</h3>
+        <p>This tab will display predictive analytics data.</p>
+      </div>
+
+      <div class="tab-content" id="optimization">
+        <h3>Optimization Recommendations</h3>
+        <p>This tab will display optimization recommendations.</p>
+      </div>
+
+      <div class="tab-content" id="environmental">
+        <h3>Environmental Impact</h3>
+        <p>This tab will display environmental impact data.</p>
+      </div>
+
+      <div class="tab-content" id="ai-insights">
+        <h3>AI Insights</h3>
+        <p>This tab will display AI insights and recommendations.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
