@@ -1,19 +1,15 @@
 from flask import Flask, request, render_template
 import pandas as pd
 import pickle
-import os
 
+# Flask app initialization
 app = Flask(__name__)
 
-# Load all models dynamically
-models = {
-    "efficiency": pickle.load(open("artifacts/efficiency_model.pkl", "rb")),
-    "risk": pickle.load(open("artifacts/risk_model.pkl", "rb")),
-    "duration": pickle.load(open("artifacts/duration_model.pkl", "rb"))
-}
-
-# Load preprocessor (assumed shared across models)
-preprocessor = pickle.load(open("artifacts/preprocessor.pkl", "rb"))
+# Load model and preprocessor
+with open("artifacts/model.pkl", "rb") as f:
+    model = pickle.load(f)
+with open("artifacts/preprocessor.pkl", "rb") as f:
+    preprocessor = pickle.load(f)
 
 class CustomData:
     def __init__(self, labor, equipment, material, duration,
@@ -41,8 +37,6 @@ def index():
     if request.method == "POST":
         try:
             form_data = request.form
-            target = form_data["target"]  # "efficiency", "risk", or "duration"
-
             data = CustomData(
                 labor=form_data["labor"],
                 equipment=form_data["equipment"],
@@ -58,15 +52,16 @@ def index():
             )
             df = data.to_dataframe()
             scaled = preprocessor.transform(df)
-
-            # Pick appropriate model
-            model = models[target]
             prediction = model.predict(scaled)[0]
 
-            return render_template("dashboard.html", prediction=prediction, target=target, input_data=df.iloc[0].to_dict())
+            # Pass input and prediction to template
+            return render_template("dashboard.html", prediction=prediction, input_data=df.iloc[0].to_dict())
 
         except Exception as e:
             print(f"Error: {e}")
             return render_template("dashboard.html", error="Something went wrong.")
 
     return render_template("dashboard.html", prediction=None)
+
+if __name__ == "__main__":
+    app.run(debug=True)

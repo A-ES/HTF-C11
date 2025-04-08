@@ -37,11 +37,11 @@
     <h1>Construction Risk Prediction</h1>
     <form method="POST">
         <label>Select target to predict:</label><br>
-        <select name="target" required class="form-control mb-3">
-            <option value="efficiency">Resource Allocation Efficiency</option>
-            <option value="risk">Risk Level</option>
-            <option value="duration">Project Duration</option>
-        </select>
+<select name="target" required>
+    <option value="efficiency">Resource Allocation Efficiency</option>
+    <option value="risk">Risk Level</option>
+    <option value="duration">Project Duration</option>
+</select><br><br>
 
         {% for field in [
             'labor', 'equipment', 'material', 'duration',
@@ -53,13 +53,12 @@
             <input type="number" step="any" class="form-control" name="{{ field }}" required>
         </div>
         {% endfor %}
-
         <button type="submit" class="btn btn-light w-100">Predict</button>
     </form>
 
-    {% if prediction is not none %}
+    {% if results is not none %}
     <div class="result-box mt-4">
-        <strong>Predicted {{ target.replace("_", " ").title() }}:</strong> {{ prediction }}
+        <strong>Predicted Resource Allocation Efficiency:</strong> {{ results }}
     </div>
     {% endif %}
 </div>
