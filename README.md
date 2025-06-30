@@ -1,3 +1,4 @@
+
 # Construction Management Platform
 
 This platform is designed to streamline your construction projects with powerful dashboard visualization, AI-driven insights, and comprehensive project tracking.
@@ -18,3 +19,8 @@ Resource Management: Allocate and monitor equipment, materials, and labor effici
 Progress Monitoring: Log daily progress, upload photos, and track milestones.
 
 Document Management: Securely store and share all project-related documents, drawings, and contracts.
+
+## Snippets
+
+<img width="1277" alt="Screenshot 2025-06-30 at 12 07 32 PM" src="https://github.com/user-attachments/assets/1b9276e4-1fe6-490e-b7bc-9627b0173441" />
+<img width="1280" alt="Screenshot 2025-06-30 at 12 07 21 PM" src="https://github.com/user-attachments/assets/cc49d164-2e48-468a-9c79-34c31e624b5c" />
